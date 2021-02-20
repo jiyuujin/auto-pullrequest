@@ -1,33 +1,20 @@
-const JP_CAL = 'ja.japanese#holiday@group.v.calendar.google.com'
-
 /**
- * 平日か否かを判定する
- * @param date 日付
+ * 現在の日付を取得する
  */
-export const isBusinessDay = (date: Date) => {
-    if (date.getDay() == 0 || date.getDay() == 6) {
-        return false
-    }
-
-    const calJa = CalendarApp.getCalendarById(JP_CAL)
-
-    return calJa.getEventsForDay(date).length <= 0
+export const getCurrentYear = (date) => {
+    return Utilities.formatDate(date, 'Asia/Tokyo', 'yyyy')
 }
 
 /**
- * 月曜日を除いて平日か否かを判定する
- * @param date 日付
+ * 現在の日付を取得する
  */
-export const isBusinessDayExceptMonday = (date: Date) => {
-    if (date.getDay() == 0 || date.getDay() == 6) {
-        return false
-    }
+export const getCurrentMonth = (date) => {
+    return Utilities.formatDate(date, 'Asia/Tokyo', 'MM')
+}
 
-    if (date.getDay() == 1) {
-        return false // 週次MTGのある月曜は走らせない
-    }
-
-    const calJa = CalendarApp.getCalendarById(JP_CAL)
-
-    return calJa.getEventsForDay(date).length <= 0
+/**
+ * 現在の日付を取得する
+ */
+export const getCurrentDate = () => {
+    return Utilities.formatDate(new Date(), 'Asia/Tokyo', 'yyyy/MM/dd HH:mm')
 }

@@ -12,4 +12,23 @@ export class ApiService {
             payload: payload
         })
     }
+
+    /**
+     * POST通信(Auth)を行う
+     * @param api
+     * @param options
+     * @param payload
+     */
+    static postAuthenticationApi(
+        api: string,
+        options: { Authorization: string, Accept: string },
+        payload: string) {
+        return UrlFetchApp.fetch(api, {
+            headers: options,
+            method: 'post',
+            contentType: 'application/json',
+            muteHttpExceptions: true,
+            payload: payload
+        })
+    }
 }
