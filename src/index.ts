@@ -1,5 +1,5 @@
 import { SheetService } from './services/sheetService'
-import { getCurrentYear, getCurrentMonth, getCurrentDay, getCurrentDate } from './services/dateService'
+import { getCurrentYear, getCurrentMonth, getCurrentDay, getCurrentDate, isBusinessDay } from './services/dateService'
 import { GithubService } from './services/githubService'
 
 import { getPropertyValue, getDayFormat } from './utils'
@@ -22,10 +22,13 @@ global.createNewODIssue = (): void => {
     const totalCount = json.data.viewer.repository.issues.totalCount
 
     const date = new Date()
-    const lastMonth = new Date(date.getFullYear(), date.getMonth()-1, date.getDate())
-    const currentYear = getCurrentYear(lastMonth)
-    const currentMonth = getCurrentMonth(lastMonth)
-    const currentDay = getCurrentDay(lastMonth)
+    const today = new Date(date.getFullYear(), date.getMonth(), date.getDate())
+    if (!isBusinessDay(today)) {
+        return
+    }
+    const currentYear = getCurrentYear(today)
+    const currentMonth = getCurrentMonth(today)
+    const currentDay = getCurrentDay(today)
 
     const title = `${currentYear}/${currentMonth}/${currentDay} で喋ったこと Vol.${oldIndex + totalCount}`
 
