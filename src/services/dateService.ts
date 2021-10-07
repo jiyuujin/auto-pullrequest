@@ -13,6 +13,13 @@ export const getCurrentMonth = (date) => {
 }
 
 /**
+ * 現在の日を取得する
+ */
+export const getCurrentDay = (date) => {
+    return Utilities.formatDate(date, 'Asia/Tokyo', 'dd')
+}
+
+/**
  * 現在の日付を取得する
  */
 export const getCurrentDate = () => {

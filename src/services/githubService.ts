@@ -1,7 +1,7 @@
 import { ApiService } from './apiService'
 import { SlackService } from './slackService'
 
-import { SLACK_INCOMING_API, GITHUB_API, GITHUB_LABEL_ID, GITHUB_TOKEN } from '~/constants'
+import { SLACK_INCOMING_API, GITHUB_API, GITHUB_TOKEN } from '~/constants'
 
 const options: {
     Authorization: string
@@ -12,15 +12,35 @@ const options: {
 }
 
 export class GithubService {
+    static fetchIssuesTotalCount(name: string) {
+        const query = `query {
+            viewer {
+                repository(name:"${name}") {
+                    issues {
+                        totalCount
+                    }
+                }
+            }
+        }`
+
+        const payload = JSON.stringify({ query: query })
+
+        const response = ApiService.getAuthenticationApi(GITHUB_API, options, payload)
+        const json = JSON.parse(response.getContentText())
+        Logger.log(json)
+
+        return json
+    }
     /**
      * 新しいissueを切る
      * @param repo
      * @param title
+     * @param label
      * @param body
      */
-    static createNewIssue(repo: string, title: string, body: string) {
+    static createNewIssue(repo: string, title: string, label?: string, body?: string) {
         const mutation = `mutation {
-            createIssue(input:{repositoryId:"${repo}", title:"${title}", body:"${body}", labelIds: ["${GITHUB_LABEL_ID}"]}) {
+            createIssue(input:{repositoryId:"${repo}", title:"${title}" ${body ? `, body:"${body}"` : ''} ${label ? `, labelIds: ["${label}"]` : ''}) {
                 issue {
                     title,
                     url
