@@ -12,6 +12,10 @@ const options: {
 }
 
 export class GithubService {
+    /**
+     * Issueの総数を取得する
+     * @param name
+     */
     static fetchIssuesTotalCount(name: string) {
         const query = `query {
             viewer {
@@ -31,6 +35,7 @@ export class GithubService {
 
         return json
     }
+
     /**
      * 新しいissueを切る
      * @param repo
