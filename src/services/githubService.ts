@@ -40,7 +40,7 @@ export class GithubService {
      */
     static createNewIssue(repo: string, title: string, label?: string, body?: string) {
         const mutation = `mutation {
-            createIssue(input:{repositoryId:"${repo}", title:"${title}" ${body ? `, body:"${body}"` : ''} ${label ? `, labelIds: ["${label}"]` : ''}) {
+            createIssue(input:{repositoryId:"${repo}", title:"${title}" ${body ? `, body:"${body}"` : ''} ${label ? `, labelIds: ["${label}"]` : ''}}) {
                 issue {
                     title,
                     url
