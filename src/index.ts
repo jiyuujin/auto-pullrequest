@@ -30,7 +30,7 @@ global.createNewODIssue = (): void => {
     const currentMonth = getCurrentMonth(today)
     const currentDay = getCurrentDay(today)
 
-    const title = `${currentYear}/${currentMonth}/${currentDay} で喋ったこと Vol.${oldIndex + totalCount}`
+    const title = `${currentYear}/${currentMonth}/${currentDay} で喋ったこと Vol.${oldIndex + totalCount + 1}`
 
     GithubService.createNewIssue(GITHUB_REPO_ID, title)
 }
