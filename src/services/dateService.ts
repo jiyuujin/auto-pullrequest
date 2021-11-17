@@ -36,6 +36,13 @@ export const isBusinessDay = (date) => {
         return false
     }
 
+    if (date.getFullYear() == 2021 && date.getMonth() + 1 == 12 && date.getDate() > 28) {
+        return false
+    }
+    if (date.getFullYear() == 2022 && date.getMonth() + 1 == 1 && date.getDate() < 5) {
+        return false
+    }
+
     const calJa = CalendarApp.getCalendarById(JP_CAL)
 
     return calJa.getEventsForDay(date).length <= 0
