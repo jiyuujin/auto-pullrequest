@@ -11,24 +11,12 @@
     "jsx": "preserve",
     "importHelpers": true,
     "skipLibCheck": true,
-    "types": [
-      "@types/google-apps-script",
-      "@types/node"
-    ],
+    "types": ["@types/google-apps-script", "@types/node"],
     "paths": {
-      "~/*": [
-        "./src/*"
-      ],
-      "@/*": [
-        "./src/*"
-      ]
+      "~/*": ["./src/*"],
+      "@/*": ["./src/*"]
     }
   },
-  "include": [
-    "src/**/*"
-  ],
-  "exclude": [
-    "node_modules",
-    "dist"
-  ]
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "dist"]
 }
