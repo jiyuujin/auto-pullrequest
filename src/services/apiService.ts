@@ -2,6 +2,16 @@ export class ApiService {
   /**
    * GET通信を行う
    * @param api
+   */
+  static getApi(api: string) {
+    return UrlFetchApp.fetch(api, {
+      muteHttpExceptions: true,
+    })
+  }
+
+  /**
+   * GET通信を行う
+   * @param api
    * @param options
    * @param payload
    */

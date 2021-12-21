@@ -7,9 +7,10 @@ import {
   isBusinessDay,
 } from './services/dateService'
 import { GithubService } from './services/githubService'
+import { InsightService } from './services/insightService'
 
 import { getPropertyValue, getDayFormat } from './utils'
-import { GITHUB_LABEL_ID } from './constants'
+import { GITHUB_LABEL_ID, products } from './constants'
 
 declare let global: any
 
@@ -56,4 +57,10 @@ global.createNewCVIssue = (): void => {
   const body = `## はじめに\n${currentYear}年 ${currentMonth}月 を振り返ってみます。`
 
   GithubService.createNewIssue(GITHUB_REPO_ID, title, label, body)
+}
+
+global.analyzeProducts = (): void => {
+  products.map((product) => {
+    InsightService.analyze(product.sheetName, product.name, product.url)
+  })
 }
