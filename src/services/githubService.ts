@@ -20,7 +20,7 @@ export class GithubService {
     const query = `query {
             viewer {
                 repository(name:"${name}") {
-                    issues {
+                    issues(states: OPEN) {
                         totalCount
                     }
                 }
