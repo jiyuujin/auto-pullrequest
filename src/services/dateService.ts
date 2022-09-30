@@ -65,10 +65,10 @@ export const isSpecialDay = (date) => {
   if (date.getFullYear() == 2022 && date.getMonth() + 1 == 5 && date.getDate() < 9) {
     return false
   }
-  if (date.getFullYear() == 2022 && date.getMonth() + 1 == 8 && (date.getDate() > 8 || date.getDate() < 15)) {
+  if (date.getFullYear() == 2022 && date.getMonth() + 1 == 8 && (date.getDate() > 8 && date.getDate() < 15)) {
     return false
   }
-  if (date.getFullYear() == 2022 && date.getMonth() + 1 == 9 && (date.getDate() > 17 || date.getDate() < 25)) {
+  if (date.getFullYear() == 2022 && date.getMonth() + 1 == 9 && (date.getDate() > 17 && date.getDate() < 25)) {
     return false
   }
   return true
