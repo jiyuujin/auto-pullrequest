@@ -51,6 +51,7 @@ export const isBusinessDay = (date) => {
  * 2022 ゴールデンウィーク
  * 2022 盆
  * 2022 シルバーウィーク
+ * 2022-2023 年末年始
  */
 export const isSpecialDay = (date) => {
   if (date.getFullYear() == 2021 && date.getMonth() + 1 == 12 && date.getDate() > 28) {
@@ -69,6 +70,12 @@ export const isSpecialDay = (date) => {
     return false
   }
   if (date.getFullYear() == 2022 && date.getMonth() + 1 == 9 && (date.getDate() > 17 && date.getDate() < 25)) {
+    return false
+  }
+  if (date.getFullYear() == 2022 && date.getMonth() + 1 == 12 && date.getDate() > 22) {
+    return false
+  }
+  if (date.getFullYear() == 2023 && date.getMonth() + 1 == 1 && date.getDate() < 10) {
     return false
   }
   return true
