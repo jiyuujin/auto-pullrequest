@@ -75,7 +75,7 @@ export const isSpecialDay = (date) => {
   if (date.getFullYear() == 2022 && date.getMonth() + 1 == 12 && date.getDate() > 22) {
     return false
   }
-  if (date.getFullYear() == 2023 && date.getMonth() + 1 == 1 && date.getDate() < 10) {
+  if (date.getFullYear() == 2023 && date.getMonth() + 1 == 1 && date.getDate() < 6) {
     return false
   }
   return true
