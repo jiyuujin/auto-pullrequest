@@ -36,6 +36,11 @@ export const isBusinessDay = (date) => {
     return false
   }
 
+  // 金曜は送信しない
+  if (date.getDay() == 5) {
+    return false
+  }
+
   if (isSpecialDay(date) == false) {
     return false
   }
